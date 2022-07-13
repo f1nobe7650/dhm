@@ -9,8 +9,7 @@ _G.Distance = 190000343
     _G.AimKey =    "p"  
     
   
-    local SilentAim = false 
-_G.silentaim = false
+    local SilentAim = true 
     local LocalPlayer = game:GetService("Players").LocalPlayer
     local Players = game:GetService("Players")
     local Mouse = LocalPlayer:GetMouse()
@@ -78,7 +77,7 @@ Duration = 3
         if self == Mouse and (Index == "Hit") then 
             local Distance = _G.Distance
             local Targete = nil
-            if _G.silentaim == true then
+            if SilentAim then
                 
                 for _, v in pairs(Players:GetPlayers()) do 
                     if v ~= LocalPlayer and v.Character and v.Character:FindFirstChild("HumanoidRootPart") and v.Character:FindFirstChild("Humanoid") and v.Character:FindFirstChild("Humanoid").Health > 0 then
