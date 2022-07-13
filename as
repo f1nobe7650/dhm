@@ -78,7 +78,7 @@ Duration = 3
         if self == Mouse and (Index == "Hit") then 
             local Distance = _G.Distance
             local Targete = nil
-            if SilentAim then
+            if SilentAim and _G.mysilentaimtogglesmh == true then
                 
                 for _, v in pairs(Players:GetPlayers()) do 
                     if v ~= LocalPlayer and v.Character and v.Character:FindFirstChild("HumanoidRootPart") and v.Character:FindFirstChild("Humanoid") and v.Character:FindFirstChild("Humanoid").Health > 0 then
@@ -102,7 +102,7 @@ Duration = 3
             end
             
             if Targete ~= nil and Targete[Options.Torso] and Targete:FindFirstChild("Humanoid").Health > 0 then
-                if SilentAim and _G.mysilentaimtogglesmh == true then 
+                if SilentAim  == true then 
                     local ShootThis = Targete[Options.Torso] -- or Options.Head
                     local Predicted_Position = ShootThis.CFrame + (ShootThis.Velocity * _G.Prediction + Vector3.new(0,0.5,0)) --  (-1) = Less blatant
                     return ((Index == "Hit" and Predicted_Position))
