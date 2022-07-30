@@ -10,6 +10,7 @@ _G.Distance = 190000343
     
   
     local SilentAim = true 
+    getgenv().SilentAimToggle = false
     local LocalPlayer = game:GetService("Players").LocalPlayer
     local Players = game:GetService("Players")
     local Mouse = LocalPlayer:GetMouse()
@@ -24,7 +25,7 @@ _G.Distance = 190000343
     FOV_CIRCLE.Thickness = 1
     FOV_CIRCLE.Transparency = 1
     FOV_CIRCLE.Color = Color3.new(0, 1, 0)
-    FOV_CIRCLE.Radius = 600
+    FOV_CIRCLE.Radius = 300
     FOV_CIRCLE.Position = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
     
     Options = {
@@ -101,13 +102,13 @@ Duration = 3
             end
             
             if Targete ~= nil and Targete[Options.Torso] and Targete:FindFirstChild("Humanoid").Health > 0 then
-                if SilentAim then 
+                if SilentAim  and getgenv().SilentAimToggle == true then 
                     local ShootThis = Targete[Options.Torso] -- or Options.Head
                     local Predicted_Position = ShootThis.CFrame + (ShootThis.Velocity * _G.Prediction + Vector3.new(0,0.5,0)) --  (-1) = Less blatant
                     return ((Index == "Hit" and Predicted_Position))
                 end
             end
-            
-        end
+            end 
+ 
         return oldIndex(self, Index)
     end)
