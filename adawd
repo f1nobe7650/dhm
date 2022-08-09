@@ -160,15 +160,7 @@ end
         end)
     end
  
-    if getgenv().tracermode then
-        game:GetService"RunService".Stepped:connect(function()
-            if Locking and Plr.Character and Plr.Character:FindFirstChild("LowerTorso") then
-                Tracer.CFrame = CFrame.new(Plr.Character.LowerTorso.Position+(Plr.Character.LowerTorso.Velocity*Prediction))
-            else
-                Tracer.CFrame = CFrame.new(0, 9999, 0)
-            end
-        end)
-    end
+   
  
  
  
